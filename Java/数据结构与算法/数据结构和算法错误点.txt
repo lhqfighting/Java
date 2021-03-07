@@ -1,0 +1,12 @@
+看到168了，马上结束，总体来说很不错，但是目前发现两个bug：1.赫夫曼压缩案例的时候，如果压缩生成的最后一个byte数为负值，会多出24位1,解决方法：这一段判断条件加一个temp<0
+if (flag||temp<0) {
+return string.substring(string.length() - 8);
+} else {
+return string;
+}
+2.今天看到的贪心算法，思路没问题，实现的时候，这一个代码：
+(maxKey == null || tempSet.size() >broadcasts.get(maxKey).size())
+有问题，broadcasts.get(maxKey).size()得到的值不不是retainAll()后的值，会导致，前面的广播只要还可以覆盖一个城市（实际共有3个），后面的广播可以再覆盖2个城市，也会输出前一个广播，因为broadcasts.get(maxKey).size()得到的是3不是1.
+解决方法：加一个标签，记录下最大的可再覆盖的size就解决了。
+总体来说，很不错，收益良多，老师讲的快，有点小问题很正常，指出来，方便大家跳坑。
+最后谢谢尚硅谷的分享！明后天就可以看完了，哈哈
